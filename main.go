@@ -122,24 +122,23 @@ func searchHandler(w http.ResponseWriter, r *http.Request) {
 	if ok := !search.IsLastPage(); ok {
 		search.NextPage++
 	}
-
 	err = tpl.Execute(w, search)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 	}
+
 }
 
 func main() {
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "3000"
-	}
-
-	apiKey = flag.String("apikey", "", "Newsapi.org access key")
+	apiKey = flag.String("apiKey", "", "Newsapi.org access key")
 	flag.Parse()
 
 	if *apiKey == "" {
-		log.Fatal("apiKey must be set")
+		log.Fatal("Set the api key to proceed")
+	}
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "3000"
 	}
 
 	mux := http.NewServeMux()

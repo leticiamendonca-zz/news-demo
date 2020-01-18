@@ -1,3 +1,3 @@
-module github.com/freshman-tech/news-demo
-
-go 1.12.9
+module 
+github.com/leticiamendonca/news-demo
+go 1.13.3
